@@ -19,6 +19,7 @@ type -a rbenv > /dev/null && eval "$(rbenv init -)"
 
 # Load pyenv (to manage your Python versions)
 export PATH="${HOME}/.pyenv/bin:${PATH}" # Needed for Linux/WSL
+export PATH="${HOME}/.pyenv/shims:${PATH}"
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1 # https://github.com/pyenv/pyenv-virtualenv/issues/135
 type -a pyenv > /dev/null && eval "$(pyenv init -)" && eval "$(pyenv virtualenv-init -)" && RPROMPT+='[🐍 $(pyenv_prompt_info)]'
 
@@ -51,7 +52,7 @@ type -a nvm > /dev/null && load-nvmrc
 # Rails and Ruby uses the local `bin` folder to store binstubs.
 # So instead of running `bin/rails` like the doc says, just run `rails`
 # Same for `./node_modules/.bin` and nodejs
-export PATH="./bin:./node_modules/.bin:${PATH}:/usr/local/sbin"
+export PATH="${PATH}:./bin:./node_modules/.bin:/usr/local/sbin"
 
 # Store your own aliases in the ~/.aliases file and load the here.
 [[ -f "$HOME/.aliases" ]] && source "$HOME/.aliases"
@@ -59,3 +60,4 @@ export PATH="./bin:./node_modules/.bin:${PATH}:/usr/local/sbin"
 # Encoding stuff for the terminal
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8export BUNDLER_EDITOR="'/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl' -a"
+
